@@ -49,6 +49,7 @@ CREATE TABLE Usuarios (
     usuario_id UUID PRIMARY KEY,
     nombre TEXT NOT NULL,
     apellido TEXT NOT NULL,
+    dni TEXT NOT NULL,
     email TEXT NOT NULL,
     contrasena TEXT NOT NULL,
     telefono TEXT,
