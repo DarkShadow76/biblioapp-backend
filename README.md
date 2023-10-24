@@ -2,7 +2,7 @@
 
 Grupo:
 
-- Abraha Silvera
+- Abrahan Silvera
 
 ## Instalacion
 
