@@ -1,7 +1,7 @@
 import { Sequelize, DataTypes } from "sequelize";
 import { sequelize } from "../database/database.js";
 
-export const usuario = sequelize.define('usuario', {
+export const usuario = sequelize.define('Usuarios', {
   usuario_id: {
     primaryKey: true,
     type: DataTypes.UUID,
@@ -15,11 +15,6 @@ export const usuario = sequelize.define('usuario', {
   apellido: {
     type: DataTypes.TEXT,
     allowNull: false
-  },
-  dni: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-    defaultValue: "7777777"
   },
   email: {
     type: DataTypes.TEXT,
