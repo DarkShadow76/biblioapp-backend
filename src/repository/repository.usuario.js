@@ -1,4 +1,4 @@
-const{ usuario } = require('@models/usuario.models')
+const{ usuario } = require('../models/usuario.models.js')
 const{ Pool } = require('pg')
 
 const create = async (usuario) => {
@@ -6,7 +6,7 @@ const create = async (usuario) => {
   try {
     console.log(usuario)
 
-    const { nombre, apellido, email, contrasena, telefono, direccion } = usuario;
+    const { nombre, apellido, email, contrasena, telefono, direccion, rol_usuario } = usuario;
 
     const newUsuario = await usuario.create(usuario);
 
@@ -23,7 +23,7 @@ const findAll = async () => {
     return await usuario.findAll();
   } catch (error) {
     console.error(error)
-
+    
     return null;
   }
 }
@@ -46,7 +46,7 @@ const update = async (usuario) => {
   try {
     const foundUsuario = await usuario.findOne({
       where: {
-        usuario_id,
+        usuario_id: usuario.usuario_id
       }
     })
     foundUsuario.set(usuario);

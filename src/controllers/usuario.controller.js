@@ -43,11 +43,11 @@ export const createUsuario = async (req, res) => {
     const newUsuario = await usuario.create({
       nombre,
       apellido,
-      dni,
-      correo,
-      contrasenia,
+      email,
+      contrasena,
       telefono,
-      tipo,
+      direccion,
+      rol_usuario,
     })
 
     res.json(newUsuario)
@@ -63,22 +63,19 @@ export const updateUsuario = async (req, res) => {
     const {
       nombre,
       apellido,
-      dni,
       email,
       contrasena,
       telefono,
       direccion,
-
     } = req.body
 
     const Usuario = await usuario.findByPk(id)
     Usuario.nombre = nombre
     Usuario.apellido = apellido
-    Usuario.correo = correo
-    Usuario.contrasenia = contrasenia
+    Usuario.email = email
+    Usuario.contrasena = contrasena
     Usuario.telefono = telefono
-    Usuario.id_reserva = id_reserva
-    Usuario.id_servicio = id_servicio
+    Usuario.direccion = direccion
 
     await Usuario.save()
 
@@ -94,7 +91,7 @@ export const deleteUsuario = async (req, res) => {
     const { id } = req.params;
     await usuario.destroy({
       where: {
-        id,
+        usuario_id :id,
       }
     });
 
@@ -105,11 +102,11 @@ export const deleteUsuario = async (req, res) => {
   }
 };
 
-async function getUser(correo, contrasenia, resp) {
+async function getUser(email, contrasena, resp) {
   const number = await usuario.count({
     where: {
-      correo,
-      contrasenia,
+      email,
+      contrasena,
     }
   })
   if (number = 0) {
@@ -119,8 +116,8 @@ async function getUser(correo, contrasenia, resp) {
   } else {
     const Usuario = await usuario.findAll({
       where: {
-        correo: correo,
-        contrasenia: contrasenia
+        email,
+        contrasena,
       }
     })
   }

@@ -1,7 +1,7 @@
 import { Sequelize, DataTypes } from "sequelize";
 import { sequelize } from "../database/database.js";
 
-export const usuario = sequelize.define('Usuarios', {
+export const usuario = sequelize.define('usuarios', {
   usuario_id: {
     primaryKey: true,
     type: DataTypes.UUID,
@@ -33,11 +33,12 @@ export const usuario = sequelize.define('Usuarios', {
     allowNull: true
   },
   rol_usuario: {
-    type: DataTypes.ENUM('root', 'manager', 'cliente'),
+    type: DataTypes.ENUM('root', 'manager', 'client'),
     allowNull: false,
   }
 },
   {
+    tableName: 'usuarios',
     timestamps: false,
     freezeTableName: true
   }
