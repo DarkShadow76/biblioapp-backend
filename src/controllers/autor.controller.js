@@ -1,97 +1,88 @@
-import { invUser } from "../util.js";
-import { usuario } from "../models/usuario.models.js";
+//import { invUser } from "../util.js";
+import { autor } from "../models/autor.models.js";
 
-export const getUsuario = async (req, res) => {
+export const getAutor = async (req, res) => {
   try {
     const { id } = req.params
-    const Usuario = await usuario.findOne({
+    const Autor = await autor.findOne({
       where: {
-        usuario_id: id,
+        autor_id: id,
       }
     })
 
-    if (!Usuario) return res.status(404).json({ message: 'Usuario no existe' })
-    res.json(Usuario)
+    if (!Autor) return res.status(404).json({ message: 'Autor no existe' })
+    res.json(Autor)
 
   } catch (error) {
     return res.status(500).json({ message: error.message })
   }
 };
 
-export const getUsuarios = async (req, res) => {
+export const getAutores = async (req, res) => {
   try {
-    const listaUsuarios = await usuario.findAll();
-    res.json(listaUsuarios);
+    const listaAutores = await autor.findAll();
+    res.json(listaAutores);
 
   } catch (error) {
     return res.status(500).json({ message: error.message })
   }
 };
 
+/*
 export const getUsuariosByType = async (req, resp) => {
   const correo = req.query.correo
   const contrasenia = req.query.contrasenia
 
   getUser(correo, contrasenia, resp);
 };
+*/
 
-export const createUsuario = async (req, res) => {
-  const { nombre, apellido, dni,email, contrasena, telefono, direccion,rol_usuario } = req.body
+export const createAutor = async (req, res) => {
+  const { nombre_autor, nacionalidad, informacion_biografica } = req.body
 
   try {
-    const newUsuario = await usuario.create({
-      nombre,
-      apellido,
-      dni,
-      email,
-      contrasena,
-      telefono,
-      direccion,
-      rol_usuario,
+    const newAutor = await autor.create({
+      nombre_autor,
+      nacionalidad,
+      informacion_biografica,
     })
 
-    res.json(newUsuario)
+    res.json(newAutor)
 
   } catch (error) {
     return res.status(500).json({ message: error.message })
   }
 };
 
-export const updateUsuario = async (req, res) => {
+export const updateAutor = async (req, res) => {
   try {
     const { id } = req.params;
     const {
-      nombre,
-      apellido,
-      email,
-      contrasena,
-      telefono,
-      direccion,
+      nombre_autor,
+      nacionalidad,
+      informacion_biografica,
     } = req.body
 
-    const Usuario = await usuario.findByPk(id)
-    Usuario.nombre = nombre
-    Usuario.apellido = apellido
-    Usuario.email = email
-    Usuario.contrasena = contrasena
-    Usuario.telefono = telefono
-    Usuario.direccion = direccion
+    const Autor = await autor.findByPk(id)
+    Autor.nombre_autor = nombre_autor
+    Autor.nacionalidad = nacionalidad
+    Autor.informacion_biografica = informacion_biografica
 
-    await Usuario.save()
+    await Autor.save()
 
-    res.json(Usuario)
+    res.json(Autor)
 
   } catch (error) {
     return res.status(500).json({ message: error.message })
   }
 };
 
-export const deleteUsuario = async (req, res) => {
+export const deleteAutor = async (req, res) => {
   try {
     const { id } = req.params;
-    await usuario.destroy({
+    await autor.destroy({
       where: {
-        usuario_id :id,
+        autor_id :id,
       }
     });
 
@@ -102,6 +93,7 @@ export const deleteUsuario = async (req, res) => {
   }
 };
 
+/*
 async function getUser(email, contrasena, resp) {
   const number = await usuario.count({
     where: {
@@ -125,4 +117,4 @@ async function getUser(email, contrasena, resp) {
   resp.send(Usuario)
   //resp.status(404).json({ message: 'Usuario no existe' })
   //resp.send(invUser)
-}
+}*/

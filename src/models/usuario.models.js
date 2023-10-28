@@ -16,6 +16,11 @@ export const usuario = sequelize.define('usuarios', {
     type: DataTypes.TEXT,
     allowNull: false
   },
+  dni: {
+    type: DataTypes.TEXT,
+    unique: true,
+    allowNull: false
+  },
   email: {
     type: DataTypes.TEXT,
     allowNull: false
@@ -26,7 +31,7 @@ export const usuario = sequelize.define('usuarios', {
   },
   telefono: {
     type: DataTypes.STRING(20),
-    allowNull: false
+    allowNull: true
   },
   direccion: {
     type: DataTypes.TEXT,
