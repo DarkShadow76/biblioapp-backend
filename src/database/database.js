@@ -3,8 +3,11 @@ import Sequelize from 'sequelize';
 import * as dotenv from 'dotenv';
 dotenv.config();
 
-const RUTA = /*process.env.DATABASE_URL ||*/
-// postgres://<USUARIO>:<PASSWORD>@<URL_HOST_BD>:<PUERTO_BD>/<NOMBRE_BD>
-  "postgres://postgres:postgres@localhost:5432/libraryapp"
-
-export const sequelize = new Sequelize(RUTA);
+export const sequelize = new Sequelize({
+  dialect: process.env.DB_DIALECT,
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  database: process.env.DB_NAME,
+  username: process.env.DB_USER,
+  password: process.env.DB_PASSWORD
+});

@@ -1,51 +1,49 @@
 import { Sequelize, DataTypes } from "sequelize";
-import { sequelize } from "../database/database.js";
+import { sequelize } from "../database/database";
 
-export const usuario = sequelize.define('usuarios', {
-  usuario_id: {
+export const libros = sequelize.define('libros', {
+  libro_id: {
     primaryKey: true,
     type: DataTypes.UUID,
     allowNull: false,
     defaultValue: Sequelize.UUIDV4
   },
-  nombre: {
+  titulo: {
     type: DataTypes.TEXT,
     allowNull: false
   },
-  apellido: {
+  autor: {
     type: DataTypes.TEXT,
     allowNull: false
   },
-  dni: {
-    type: DataTypes.TEXT,
-    unique: true,
-    allowNull: false
-  },
-  email: {
-    type: DataTypes.TEXT,
-    unique: true,
-    allowNull: false
-  },
-  contrasena: {
+  isbn: {
     type: DataTypes.TEXT,
     allowNull: false
   },
-  telefono: {
-    type: DataTypes.STRING(20),
-    allowNull: true
-  },
-  direccion: {
+  genero: {
     type: DataTypes.TEXT,
-    allowNull: true
+    allowNull: false
   },
-  rol_usuario: {
-    type: DataTypes.ENUM('root', 'manager', 'client'),
-    allowNull: false,
-  }
+  anio_publicacion: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
+  editor: {
+    type: DataTypes.TEXT,
+    allowNull: false
+  },
+  resumen: {
+    type: DataTypes.TEXT,
+    allowNull: false
+  },
+  portada: {
+    type: DataTypes.TEXT,
+    allowNull: false
+  },
 },
   {
-    tableName: 'usuarios',
-    timestamps: false,
+    tableName: 'libros',
+    timestamps: true,
     freezeTableName: true
   }
 );

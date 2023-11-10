@@ -87,7 +87,7 @@ CREATE TABLE public.libros (
     anio_publicacion integer,
     editor text,
     resumen text,
-    portada bytea
+    portada text
 );
 
 
