@@ -106,29 +106,3 @@ export const deleteLibro = async (req, res) => {
     return res.status(500).json({ message: error.message })
   }
 };
-
-/*
-async function getUser(email, contrasena, resp) {
-  const number = await usuario.count({
-    where: {
-      email,
-      contrasena,
-    }
-  })
-  if (number = 0) {
-    //var prob = JSON.parse("-1")
-    console.log("No existe tal usuario el tabla")
-    resp.send(invUser)
-  } else {
-    const Usuario = await usuario.findAll({
-      where: {
-        email,
-        contrasena,
-      }
-    })
-  }
-  //console.log("Usuario " + number)
-  resp.send(Usuario)
-  //resp.status(404).json({ message: 'Usuario no existe' })
-  //resp.send(invUser)
-}*/
