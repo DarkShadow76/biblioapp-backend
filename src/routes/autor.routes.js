@@ -12,7 +12,6 @@ const router = Router();
 router.get("/autores", getAutores);
 router.get("/autor/:id", getAutor);
 router.post("/autor", createAutor);
-//router.get("/usuarioOnTable", getUsuariosByType);
 router.put("/autor/:id", updateAutor);
 router.delete("/autor/:id", deleteAutor);
 

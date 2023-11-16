@@ -1,5 +1,5 @@
 import { Sequelize, DataTypes } from "sequelize";
-import { sequelize } from "../database/database";
+import { sequelize } from "../database/database.js";
 
 export const libros = sequelize.define('libros', {
   libro_id: {
@@ -43,7 +43,7 @@ export const libros = sequelize.define('libros', {
 },
   {
     tableName: 'libros',
-    timestamps: true,
+    timestamps: false,
     freezeTableName: true
   }
 );
