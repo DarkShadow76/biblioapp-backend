@@ -2,7 +2,7 @@
 const {autor} = require('../models/autor.models.js')
 
 const create = async (autor) => {
-  console.log("create autor")
+  console.log("::: Create autor :::")
   try {
     console.log(autor)
 
@@ -19,6 +19,7 @@ const create = async (autor) => {
 }
 
 const findAll = async () => {
+  console.log("::: Get autores :::")
   try {
     return await autor.findAll();
   } catch (error) {
@@ -29,6 +30,7 @@ const findAll = async () => {
 }
 
 const findOne = async (id_autor) => {
+  console.log("::: Get autor :::")
   try {
     return await autor.findOne({
       where: {
@@ -43,6 +45,7 @@ const findOne = async (id_autor) => {
 }
 
 const update = async (autor) => {
+  console.log("::: Update autor :::")
   try {
     const foundAutor = await autor.findOne({
       where: {
@@ -61,6 +64,7 @@ const update = async (autor) => {
 }
 
 const remove = async (id_autor) => {
+  console.log("::: Delete autor :::")
   try {
     await autor.destroy({
       where: {
